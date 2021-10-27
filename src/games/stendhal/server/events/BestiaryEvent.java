@@ -193,6 +193,7 @@ public class BestiaryEvent extends RPEvent {
 			String name = enemy.getName();
 			Boolean solo = false;
 			Boolean shared = false;
+			Boolean found = true;
 
 			if (soloKills.contains(name)) {
 				solo = true;
@@ -204,6 +205,7 @@ public class BestiaryEvent extends RPEvent {
 			// hide the names of creatures not killed by player
 			if (!solo && !shared) {
 				name = "???";
+				found = false;
 			}
 
 			if (rare) {
@@ -211,10 +213,13 @@ public class BestiaryEvent extends RPEvent {
 			} else if (abnormal) {
 				name += " (abnormal)";
 			}
+			
+			if (found == true) {
+				sb.append(name + "," + solo.toString() + "," + shared.toString());
+				if (idx != creatureCount - 1) {
+					sb.append(";");
+				}
 
-			sb.append(name + "," + solo.toString() + "," + shared.toString());
-			if (idx != creatureCount - 1) {
-				sb.append(";");
 			}
 
 			idx++;
