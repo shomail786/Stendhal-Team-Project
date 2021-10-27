@@ -21,7 +21,7 @@ public class MeetZynnTest {
 	private SpeakerNPC npc = null;
 	private Engine en = null;
 	// The array of all questions that the player can ask Zynn
-	private final String[] chats = {"history", "news", "geography", "places", "Faiumoni", "Semos", "history", "Semos", "Ados", "Or'ril", "Nalwor", "Deniran", "use", "leves", "naming", "positioning", "get", "SPS", "Io"};
+	private final String[] chats = {"history", "news", "geography", "places", "Faiumoni", "Semos", "Ados", "Or'ril", "Nalwor", "Deniran", "use", "levels", "naming", "positioning", "get", "SPS", "Io"};
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -55,12 +55,12 @@ public class MeetZynnTest {
 		// Ask all questions, compare previous XP with current one
 		// Current XP has to be greater than the old XP
 		en.step(player, "hi");
-		int player_xp = player.getXP();
+		int player_xp;
 		int i;
 		for(i=0; i<chats.length; i++) {
+			player_xp = player.getXP();
 			en.step(player, chats[i]);
 			assertTrue("Check XP values", player_xp == player.getXP()-5);
-			player_xp = player.getXP();
 		}
 	}
 }
