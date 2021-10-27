@@ -59,7 +59,7 @@ public class MeetZynnTest {
 		int i;
 		for(i=0; i<chats.length; i++) {
 			en.step(player, chats[i]);
-			assertTrue("Check XP values", player_xp < player.getXP());
+			assertTrue("Check XP values", player_xp == player.getXP()-5);
 			player_xp = player.getXP();
 		}
 	}
