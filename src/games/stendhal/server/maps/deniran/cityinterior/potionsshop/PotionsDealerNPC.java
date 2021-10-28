@@ -152,6 +152,5 @@ public class PotionsDealerNPC implements ZoneConfigurator {
 		sign2.setPosition(10, 6);
 		zone.add(sign2);
 		
-		
 	}
 }

@@ -1,33 +1,47 @@
 package games.stendhal.server.maps.deniran.cityinterior.tannery;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertTrue;
+
+
+
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+
+import games.stendhal.server.core.engine.StendhalRPWorld;
 import games.stendhal.server.core.engine.StendhalRPZone;
-import games.stendhal.server.entity.Entity;
 import games.stendhal.server.maps.deniran.cityinterior.potionsshop.PotionsDealerNPC;
+import utilities.QuestHelper;
 import utilities.ZonePlayerAndNPCTestImpl;
 
 
-public class blackboardcheck extends ZonePlayerAndNPCTestImpl{
-	private static final String ZONE_NAME = "test zone";
-	
-	
-	public blackboardcheck() {
-		setNpcNames("Wanda");
-		setZoneForPlayer(ZONE_NAME);
-		addZoneConfigurator(new PotionsDealerNPC(), ZONE_NAME);
-	}
-	
-	@Test
-	public void testBlackboard() throws Exception {
-		PotionsDealerNPC zoneconfig = new PotionsDealerNPC();
-		StendhalRPZone testzone = new StendhalRPZone(ZONE_NAME);
-		zoneconfig.configureZone(testzone,null);
-		Entity signa = testzone.getEntityAt(10.0,6.0);
-		Entity signb = testzone.getEntityAt(5.0,6.0);
-		Assert.assertEquals("blackboards",signa);
-		Assert.assertEquals("blackboards",signb);
-	}
-	
+public class blackboardcheck extends ZonePlayerAndNPCTestImpl {
+	PotionsDealerNPC Speakernpc = new PotionsDealerNPC(); 
+ 	private static final String ZONE_NAME = "ins_deniran_potionsshop";
+ 
+ @BeforeClass
+public static void setUpBeforeClass() throws Exception {
+	QuestHelper.setUpBeforeClass();
+	setupZone(ZONE_NAME, false);
+ }
+
+public blackboardcheck() {
+	setNpcNames("wanda");
+	setZoneForPlayer(ZONE_NAME);
+	addZoneConfigurator(new PotionsDealerNPC(), ZONE_NAME);
+ }
+ 
+ 
+ @Test
+ public void testBlackboardEntity() {
+	 PotionsDealerNPC npc = new PotionsDealerNPC();
+	StendhalRPZone zone = new StendhalRPZone ("wanda");
+	final StendhalRPWorld world = StendhalRPWorld.get();
+	world.addRPZone(zone);
+	npc.configureZone(zone, null);
+  
+	assertTrue(zone.getEntityAt(5, 6).getClass() != null);
+	assertTrue(zone.getEntityAt(10, 6).getClass() != null);
+ }
+ 
 }
