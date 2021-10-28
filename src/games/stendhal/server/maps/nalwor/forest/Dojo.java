@@ -204,9 +204,17 @@ public class Dojo implements ZoneConfigurator {
 				null,
 				new SayTimeRemainingAction(QUEST_SLOT, 1, COOLDOWN, "You can't train again yet. Come back in"));
 
-		// player's ATK level is too high
+		// player's ATK level is too high when asking to train
 		samurai.add(ConversationStates.ATTENDING,
 				TRAIN_PHRASES,
+				meetsLevelCapCondition,
+				ConversationStates.ATTENDING,
+				"At your level of experience, your attack strength is too high to train here at this time.",
+				null);
+		
+		//player's ATK level is too high when asking for fee
+		samurai.add(ConversationStates.ATTENDING,
+				FEE_PHRASES,
 				meetsLevelCapCondition,
 				ConversationStates.ATTENDING,
 				"At your level of experience, your attack strength is too high to train here at this time.",
