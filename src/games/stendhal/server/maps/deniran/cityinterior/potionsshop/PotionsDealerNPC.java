@@ -24,6 +24,7 @@ import games.stendhal.server.core.pathfinder.FixedPath;
 import games.stendhal.server.core.pathfinder.Node;
 import games.stendhal.server.entity.CollisionAction;
 import games.stendhal.server.entity.Outfit;
+import games.stendhal.server.entity.mapstuff.sign.ShopSign;
 import games.stendhal.server.entity.npc.ChatAction;
 import games.stendhal.server.entity.npc.ConversationPhrases;
 import games.stendhal.server.entity.npc.ConversationStates;
@@ -42,6 +43,8 @@ import games.stendhal.server.entity.npc.condition.PlayerNextToCondition;
 import games.stendhal.server.entity.player.Player;
 
 public class PotionsDealerNPC implements ZoneConfigurator {
+
+	public ShopSign sign1,sign2;
 
 	@Override
 	public void configureZone(final StendhalRPZone zone, final Map<String, String> attributes) {
@@ -65,7 +68,7 @@ public class PotionsDealerNPC implements ZoneConfigurator {
 
 		npc.addGreeting("Welcome to Deniran's potion shop.");
 		npc.addJob("I manage this potion shop. Ask me about my #prices.");
-		npc.addHelp("If you would like to sell something, ask me about my #prices and I will tell you what I #offer.");
+		npc.addHelp("If you would like to sell something, look at the blackboard.");
 		npc.addQuest("I don't have anything for you to do. But I am trying to stock my inventory. If you want to help,"
 				+ " just ask and I'll tell you the #prices I pay for potions and poisons.");
 
@@ -136,5 +139,19 @@ public class PotionsDealerNPC implements ZoneConfigurator {
 		npc.setOutfit(new Outfit("body=1,head=0,mouth=2,eyes=1,dress=46,mask=1,hair=3"));
 
 		zone.add(npc);
+		
+		final String sellerShopName = "deniranpotionsbuy";
+		final ShopSign sign1 = new ShopSign(sellerShopName, "Wanda Potions Shop", npc.getName() + " sells the following items", true);
+		sign1.setEntityClass("blackboard");
+		sign1.setPosition(5, 6);
+		zone.add(sign1);
+		  
+		final String buyerShopName = "deniranpotionssell";
+		final ShopSign sign2 = new ShopSign(buyerShopName, "Wanda Potions Shop", npc.getName() + " sells your items", true);
+		sign2.setEntityClass("blackboard");
+		sign2.setPosition(10, 6);
+		zone.add(sign2);
+		
+		
 	}
 }
