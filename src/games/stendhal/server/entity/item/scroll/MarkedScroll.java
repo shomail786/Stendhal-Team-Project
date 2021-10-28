@@ -23,6 +23,7 @@ import games.stendhal.server.core.engine.SingletonRepository;
 import games.stendhal.server.core.engine.StendhalRPZone;
 import games.stendhal.server.core.events.TeleportNotifier;
 import games.stendhal.server.entity.player.Player;
+import games.stendhal.server.entity.status.StatusType;
 
 /**
  * Represents a marked teleport scroll.
@@ -74,7 +75,10 @@ public class MarkedScroll extends TeleportScroll {
 		 * consisting of a zone name and x and y coordinates
 		 */
 		final String infostring = getInfoString();
-
+		if (player.hasStatus(StatusType.POISONED)) {
+			player.sendPrivateText("you are poisoned");
+			return false;
+		}
 		if (infostring != null) {
 			final StringTokenizer st = new StringTokenizer(infostring);
 			if (st.countTokens() == 3) {
