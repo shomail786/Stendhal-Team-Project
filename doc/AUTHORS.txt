@@ -167,6 +167,24 @@ Authors of Stendhal are:
   · Bugs fixer
   - Diligent Dodo (aka Soniccuz)
   · Artist (mimic, dodo, suba diving concepts)
+  
+ -Max
+ · Bugs fixer (Solar and glacier centaur have the wrong elemental susceptibility)
+ -Sophie
+ · Bugs fixer - (The bestiary item is just full of fluff...)
+ -Eric
+ · Bugs fixer (Omura Sumitada's dialogue is confusing)
+ -Maggie
+ · Bugs fixer (Teleport scrolls work when poisoned)
+ -Aurora
+ · Bugs fixer (Deniran Potion Shop does not have any blackboards)
+ -Rerj
+ · Bugs fixer (Zynn Iwuhos dialogue does not grant XP)
+ -Shomail
+ · Bugs fixer (NPC Lupos doesn't want an elvish hat for quest)
+
+ 
+ 	
 
 We also thank many who have contributed to Stendhal by providing patches,
 which the rest of the team commited on their behalf.
