@@ -5,7 +5,7 @@ Changelog
 1.36uom
 *fixes*
 - Solar and glacier centaur have the wrong elemental susceptibility
-- The bestiary item is just full of fluff...
+- The bestiary item is just full of fluff....
 - Omura Sumitada's dialogue is confusing
 - Teleport scrolls work when poisoned
 - Deniran Potion Shop does not have any blackboards
